@@ -20,6 +20,16 @@ router.post('/login', async (req, res) => {
   res.send(user);
 });
 
+// Get All Cities
+router.get('/cities', async (req, res) => {
+  try {
+    const cities = await City.find();
+    res.send(cities);
+  } catch (error) {
+    res.status(500).send('Error retrieving cities.');
+  }
+});
+
 // Start Parking
 router.post('/start-parking', async (req, res) => {
   const { email, cityName, parkingAreaName } = req.body;
